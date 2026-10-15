@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Expense, CATEGORY_ICONS } from '@/types/expense';
@@ -9,10 +9,17 @@ import { LiquidGlassColors, Spacing } from '@/constants/theme';
 interface ExpenseItemProps {
   expense: Expense;
   index: number; // sirve para que cada fila entre un poquito despues de la anterior
+  onEdit: (expense: Expense) => void;
+  onDelete: (expense: Expense) => void;
 }
 
 // Una fila de la lista de gastos
-export const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense, index }) => {
+export const ExpenseItem: React.FC<ExpenseItemProps> = ({
+  expense,
+  index,
+  onEdit,
+  onDelete,
+}) => {
   // Queda algo como "15 oct"
   const formattedDate = new Date(expense.date).toLocaleDateString('es-ES', {
     day: '2-digit',
@@ -57,6 +64,24 @@ export const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense, index }) => {
             <Text style={styles.amount}>{formattedAmount}</Text>
             <Text style={styles.date}>{formattedDate}</Text>
           </View>
+        </View>
+        <View style={styles.actions}>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={`Editar gasto de ${formattedAmount}`}
+            onPress={() => onEdit(expense)}
+            style={styles.actionButton}
+          >
+            <Text style={styles.editAction}>Editar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={`Eliminar gasto de ${formattedAmount}`}
+            onPress={() => onDelete(expense)}
+            style={styles.actionButton}
+          >
+            <Text style={styles.deleteAction}>Eliminar</Text>
+          </TouchableOpacity>
         </View>
       </GlassCard>
     </Animated.View>
@@ -115,5 +140,25 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 12,
     color: LiquidGlassColors.glassTextSecondary,
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: Spacing.three,
+    marginTop: Spacing.two,
+  },
+  actionButton: {
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.two,
+  },
+  editAction: {
+    color: LiquidGlassColors.primary,
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  deleteAction: {
+    color: '#B42318',
+    fontSize: 13,
+    fontWeight: '600',
   },
 });
