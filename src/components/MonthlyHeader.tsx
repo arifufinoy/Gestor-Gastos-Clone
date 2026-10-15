@@ -8,7 +8,7 @@ import Animated, {
     withSequence,
     withSpring,
 } from 'react-native-reanimated';
-import { useExpenses } from '../../ExpenseContext';
+import { useExpenses } from '../context/ExpenseContext';
 import { GlassCard } from './GlassCard';
 
 // Muestra el mes y el total gastado

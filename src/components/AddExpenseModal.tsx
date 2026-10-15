@@ -17,7 +17,7 @@ import {
   View
 } from 'react-native';
 import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
-import { useExpenses } from '../../ExpenseContext';
+import { useExpenses } from '../context/ExpenseContext';
 
 interface AddExpenseModalProps {
   visible: boolean;

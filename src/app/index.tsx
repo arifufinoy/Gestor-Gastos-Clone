@@ -7,7 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useExpenses } from '../../ExpenseContext';
+import { useExpenses } from '../context/ExpenseContext';
 
 // Pantalla principal: total del mes, lista de gastos y el boton + para agregar
 export default function HomeScreen() {
