@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 
-import { ExpenseProvider } from '@/context/ExpenseContext';
+import { ExpenseProvider } from '../../ExpenseContext';
 
 // El provider va aqui arriba para que todas las pantallas compartan los gastos
 export default function RootLayout() {

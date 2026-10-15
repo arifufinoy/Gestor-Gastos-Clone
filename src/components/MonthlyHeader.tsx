@@ -1,15 +1,15 @@
+import { LiquidGlassColors, Spacing } from '@/constants/theme';
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  withSequence,
+    useAnimatedStyle,
+    useSharedValue,
+    withSequence,
+    withSpring,
 } from 'react-native-reanimated';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useExpenses } from '../../ExpenseContext';
 import { GlassCard } from './GlassCard';
-import { LiquidGlassColors, Spacing } from '@/constants/theme';
-import { useExpenses } from '@/context/ExpenseContext';
 
 // Muestra el mes y el total gastado
 export const MonthlyHeader: React.FC = () => {

@@ -11,6 +11,9 @@ export type Category =
   | 'Salud'
   | 'Otros';
 
+
+  //Tengo que convertir la fecha a string para poder serializarla y guardarla en el localStorage
+  //Tengo que leer la fecha como tipo date para poder manipularla y mostrarla en el calendario
 export interface Expense {
   id: string;
   amount: number; // en dolares
